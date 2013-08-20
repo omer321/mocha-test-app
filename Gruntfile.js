@@ -24,6 +24,15 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         yeoman: yeomanConfig,
+        shell: {
+            'mocha-phantomjs': {
+                command: 'mocha-phantomjs -R spec http://localhost:9000/testrunner.html',
+                options: {
+                    stdout: true,
+                    stderr: true
+                }
+            }
+        },
         watch: {
             coffee: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
@@ -52,6 +61,14 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
             }
+            // TODO: Turn this back on for PhantomJS to watch
+            // Not sure why this causes the error:
+            // Fatal error: EMFILE: Too many opened files.
+//            },
+//            jsFiles: {
+//                files: ['**/*.js'],
+//                tasks: ['shell:mocha-phantomjs']
+//            }
         },
         connect: {
             options: {
@@ -197,7 +214,6 @@ module.exports = function (grunt) {
                     // `name` and `out` is set by grunt-usemin
                     baseUrl: yeomanConfig.app + '/scripts',
                     optimize: 'none',
-                    // TODO: Figure out how to make sourcemaps work with grunt-usemin
                     // https://github.com/yeoman/grunt-usemin/issues/30
                     //generateSourceMaps: true,
                     // required to support SourceMaps
@@ -386,4 +402,7 @@ module.exports = function (grunt) {
         'test',
         'build'
     ]);
+
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-shell');
 };
