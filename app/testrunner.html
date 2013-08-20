@@ -4,20 +4,12 @@
     <meta charset="utf-8">
     <title>TESTRUNNER backbone-gcl</title>
     <link rel="stylesheet" href="bower_components/mocha/mocha.css" />
+    <script src="scripts/pi.js"></script>
 </head>
 <body>
 <h1>PhantomJS Testrunner</h1>
 <div id="mocha"></div>
 <script type="text/javascript" src="bower_components/mocha/mocha.js"></script>
-<script type="text/javascript">
-    // MOCHA SETUP
-//    mocha.setup('bdd');
-    mocha.ui('bdd');
-    mocha.reporter('html');
-    var expect = chai.expect;
-    var should = chai.should;
-    var assert = chai.assert;
-</script>
 <script data-main="scripts/test.config.js" src="bower_components/requirejs/require.js"></script>
 </body>
 </html>
