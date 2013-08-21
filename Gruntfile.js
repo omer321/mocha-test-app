@@ -60,15 +60,14 @@ module.exports = function (grunt) {
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
-            }
             // TODO: Turn this back on for PhantomJS to watch
             // Not sure why this causes the error:
             // Fatal error: EMFILE: Too many opened files.
-//            },
-//            jsFiles: {
-//                files: ['**/*.js'],
-//                tasks: ['shell:mocha-phantomjs']
-//            }
+            },
+            jsFiles: {
+                files: ['**/*.js'],
+                tasks: ['shell:mocha-phantomjs']
+            }
         },
         connect: {
             options: {
